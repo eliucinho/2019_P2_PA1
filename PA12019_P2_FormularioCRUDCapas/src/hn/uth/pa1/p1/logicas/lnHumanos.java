@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hn.uth.pa1.p1.datos;
+package hn.uth.pa1.p1.logicas;
 
 import hn.uth.pa1.p1.objetos.Humano;
 import java.util.ArrayList;
@@ -14,24 +14,18 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author uth
  */
-public class svHumanos {
+public class lnHumanos {
+    private static List<Humano> datos=new ArrayList<>();
+    private static Humano humanoSeleccionado=null;
     
     public static void setHumanoSeleccionado(Humano humano){
-        ln
+        humanoSeleccionado=humano;
     }
     
     public static Humano getHumanoSeleccionado(){
         return humanoSeleccionado;
     }
-    
-    public static void llenarTabla(){
-        datos.add(new Humano(1,"Eliud", "Varela", 150, "M", "FM", "DC"));
-        datos.add(new Humano(2,"Juian", "Varela", 150, "M", "FM", "DC"));
-        datos.add(new Humano(3,"JUlian", "Varela", 150, "M", "FM", "DC"));
-        datos.add(new Humano(4,"Carlos", "Varela", 150, "M", "FM", "DC"));
-        datos.add(new Humano(5,"Manuel", "Varela", 150, "M", "FM", "DC"));
-    }
-    
+       
     public static DefaultTableModel getModelHumano(){
         String[] columnas=new String[]{ "id", "nombre", "apellido", "peso", "sexo", "departamento", "municipio"};
         String[][] filas=new String[datos.size()][7];
@@ -69,4 +63,16 @@ public class svHumanos {
     public static void eliminar(Humano humano){
         datos.remove(humano);
     }
+    
+    public static int getIdSecuencia(){
+        int idSecuencia=1;
+        for (Humano dato : datos) {
+            if (dato.getId()>=idSecuencia) {
+                idSecuencia=dato.getId();
+                idSecuencia++;
+            }
+        }
+        return idSecuencia;
+    }
+    
 }
