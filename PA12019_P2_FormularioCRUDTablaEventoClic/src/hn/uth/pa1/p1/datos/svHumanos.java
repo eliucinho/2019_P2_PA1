@@ -15,9 +15,11 @@ import javax.swing.table.DefaultTableModel;
  * @author uth
  */
 public class svHumanos {
+    private static List<Humano> datos=new ArrayList<>();
+    private static Humano humanoSeleccionado=null;
     
     public static void setHumanoSeleccionado(Humano humano){
-        ln
+        humanoSeleccionado=humano;
     }
     
     public static Humano getHumanoSeleccionado(){
